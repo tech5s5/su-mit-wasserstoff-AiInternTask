@@ -4,8 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 import shutil
 from typing import List
-from models.embed import embed_and_store  # Import from embed.py
-from models.app import chat_with_user
+from backend.models.embed import embed_and_store  # Import from embed.py
+from backend.models.app import chat_with_user
 
 app = FastAPI()
 
