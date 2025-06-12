@@ -1,0 +1,73 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Virtual environment
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and outputs
+*.log
+*.out
+*.err
+
+# Python packages
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Test and coverage results
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Environment variables
+.env
+.env.*
+
+# Local notebooks
+*.ipynb
+notebooks/
+*.checkpoint.ipynb
+
+# FastAPI/Streamlit uploads or temporary files
+uploads/
+tmp/
+*.bak
+*.swp
+
+# MyPy, Pyre, Pytype
+.mypy_cache/
+.pytype/
+.pyre/
+
+# FAISS index or data
+*.faiss
+*.index
+
