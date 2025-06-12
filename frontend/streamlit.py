@@ -1,10 +1,12 @@
 import streamlit as st
 import requests
+import os
 
-# FastAPI backend URL
-BACKEND_URL_UPLOAD = "http://127.0.0.1:8000/upload/"
-BACKEND_URL_CHAT = "http://127.0.0.1:8000/chat/"
+BACKEND_URL = os.getenv("BACKEND_URL", "https://document-research-and-theme-7fmd.onrender.com")
 
+# Full API endpoints
+BACKEND_URL_UPLOAD = f"{BACKEND_URL}/upload/"
+BACKEND_URL_CHAT = f"{BACKEND_URL}/chat/"
 # Streamlit UI setup
 st.title("Chat with your documents")
 
