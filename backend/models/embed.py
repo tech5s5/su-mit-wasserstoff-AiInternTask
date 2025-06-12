@@ -33,20 +33,29 @@ def embed_and_store(user_id: str):
     splitter = RecursiveCharacterTextSplitter(chunk_size=2000,chunk_overlap=200)
     document = splitter.split_documents(docs)
     documents = document + doc_images
-    metadata = []
+    updated_documents = []
     for i, doc in enumerate(documents):
-        meta = doc.metadata
-        metadata.append(meta)
+        meta = doc.metadata.copy()
+    
+        meta["doc_id"] = meta.get("source", f"doc_{i}")  # Use filename or fallback
+        meta["chunk_id"] = i
 
+    # If page number available (for PDF)
+        if "page" in meta:
+            meta["citation"] = f"{meta['source']} - page {meta['page']}, chunk {i}"
+        else:
+            meta["citation"] = f"{meta['source']} - chunk {i}"
+
+        updated_documents.append(Document(page_content=doc.page_content, metadata=meta))
     # Load HuggingFace Embedding model 
     embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
 
      #Load existing FAISS index if exists
     if os.path.exists(os.path.join(faiss_dir, "index.faiss")):
         vectorstore = FAISS.load_local(faiss_dir, embeddings, allow_dangerous_deserialization=True)
-        vectorstore.add_documents(documents,metadata=metadata)
+        vectorstore.add_documents(updated_documents)
     else:
-        vectorstore = FAISS.from_documents(documents, embeddings)
+        vectorstore = FAISS.from_documents(updated_documents, embeddings)
 
     vectorstore.save_local(faiss_dir)
     print(f"✅ FAISS updated for user: {user_id}")
