@@ -67,7 +67,5 @@ tmp/
 .pytype/
 .pyre/
 
-# FAISS index or data
-*.faiss
-*.index
+
 
