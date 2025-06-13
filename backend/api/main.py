@@ -18,6 +18,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+async def root():
+    return {"message": "FastAPI backend is running!"}
+
 # PDF Upload endpoint
 @app.post("/upload/")
 async def upload_pdfs(user_id: str = Form(...), files: List[UploadFile] = File(...)):

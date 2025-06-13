@@ -2,8 +2,8 @@ import streamlit as st
 import requests
 
 # FastAPI backend URL
-BACKEND_URL_UPLOAD = "http://127.0.0.1:8000/upload/"
-BACKEND_URL_CHAT = "http://127.0.0.1:8000/chat/"
+BACKEND_URL_UPLOAD = "https://tech5-chatbot-backend.hf.space/upload/"
+BACKEND_URL_CHAT = "https://tech5-chatbot-backend.hf.space/chat/"
 
 # Streamlit UI setup
 st.title("Chat with your documents")
