@@ -1,4 +1,3 @@
-# Wasserstoff-AI-Software-Intern-Task
 
 # 🤖 Chat with Your Documents – LangChain-powered AI Assistant
 
